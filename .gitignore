@@ -1,0 +1,12 @@
+node_modules
+# Keep environment variables out of version control
+.env
+.env.development
+.env.production
+dist
+logs
+
+assets
+
+*-lock.json
+src/Projects/Blockchain/Explorer/
