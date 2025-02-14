@@ -112,7 +112,7 @@ function rlpDecodeItem(data: Uint8Array): { decoded: RlpItem, consumed: number }
 		const length = data[0] - 0xc0
 		if (length > data.length - 1) throw new Error(`Encoded array length (${length}) is larger than remaining data (${data.length - 1}).`)
 		let offset = 1
-		const results = []
+		const results:RlpItem[] = []
 		while (offset !== length + 1) {
 			const {decoded, consumed} = rlpDecodeItem(data.slice(offset))
 			results.push(decoded)
@@ -126,7 +126,7 @@ function rlpDecodeItem(data: Uint8Array): { decoded: RlpItem, consumed: number }
 		const length = decodeLength(data, 1, lengthBytesLength)
 		if (length > data.length - 1 - lengthBytesLength) throw new Error(`Encoded array length (${length}) is larger than the remaining data (${data.length - 1 - lengthBytesLength})`)
 		let offset = 1 + lengthBytesLength
-		const results = []
+		const results:RlpItem[] = []
 		while (offset !== length + 1 + lengthBytesLength) {
 			const {decoded, consumed} = rlpDecodeItem(data.slice(offset))
 			results.push(decoded)
